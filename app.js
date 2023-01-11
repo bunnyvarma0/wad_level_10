@@ -14,15 +14,12 @@ const LocalStratergy = require("passport-local");
 
 const saltRounds = 10;
 
-// eslint-disable-next-line no-undef
 app.set("views", path.join(__dirname, "views"));
-//When a user is redirected to a certain page, pop messages can be displayed or rendered using the connect-flash
 app.use(flash());
 app.use(bodyParser.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser("Some secret string"));
 app.use(csrf("this_should_be_32_character_long", ["POST", "PUT", "DELETE"]));
-//we use secret string to generate  random string with  random   characters that are allowed in the secret string field   
 app.use(
   session({
     secret: "my-super-secret-key-2837428907583420",
@@ -36,7 +33,6 @@ app.use(function (request, response, next) {
   response.locals.messages = request.flash();
   next();
 });
-//intialize the passport and session  variables
 app.use(passport.initialize());
 app.use(passport.session());
 
@@ -202,17 +198,6 @@ app.get("/signout", (request, response, next) => {
   });
 });
 
-// app.get("/todos", async function (_request, response) {
-//   console.log("Processing list of all Todos ...");
-//   // FILL IN YOUR CODE HERE
-//   try {
-//     const todos = await Todo.findAll();
-//     return response.json(todos);
-//   } catch (error) {
-//     console.log(error);
-//     return response.status(422).json(error);
-//   }
-// });
 
 app.get(
   "/todos/:id",
