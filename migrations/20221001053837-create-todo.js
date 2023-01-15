@@ -1,5 +1,6 @@
 "use strict";
 /** @type {import('sequelize-cli').Migration} */
+// npm install && NODE_ENV=production npx sequelize-cli db:migrate
 module.exports = {
   async up(queryInterface, Sequelize) {
     await queryInterface.createTable("Todos", {
