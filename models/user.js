@@ -2,13 +2,8 @@
 const { Model } = require("sequelize");
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
-    /**
-     * Helper method for defining associations.
-     * This method is not a part of Sequelize lifecycle.
-     * The `models/index` file will call this method automatically.
-     */
+   
     static associate(models) {
-      // define association here
       User.hasMany(models.Todo, {
         foreignKey: "userId",
       });
@@ -21,7 +16,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: {
-            msg: "Please provide a firstName",
+            msg: "Please provide the firstName",
           },
         },
       },
@@ -31,7 +26,7 @@ module.exports = (sequelize, DataTypes) => {
         allowNull: false,
         validate: {
           notEmpty: {
-            msg: "Please provide email_id",
+            msg: "Please provide the email_id",
           },
         },
       },
