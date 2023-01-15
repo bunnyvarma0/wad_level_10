@@ -92,7 +92,7 @@ module.exports = (sequelize, DataTypes) => {
           notNull: true,
           len: {
             args: 5,
-            msg: "Title length must greater than 5",
+            msg: "The length of the Title must be greater than 5",
           },
         },
       },
@@ -102,7 +102,7 @@ module.exports = (sequelize, DataTypes) => {
         validate: {
           notNull: true,
           notEmpty: {
-            msg: "Please enter a valid date",
+            msg: "Please provide a valid date",
           },
         },
       },
