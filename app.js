@@ -1,20 +1,16 @@
-/* eslint-disable no-unused-vars */
 const express = require("express");
 const app = express();
 const { Todo, User } = require("./models");
 const cookieParser = require("cookie-parser");
-// const csrf = require("csurf");
 const csrf = require("tiny-csrf");
 const bodyParser = require("body-parser");
 const path = require("path");
 const { response } = require("express");
 
-//flash
 const flash = require("connect-flash");
 app.set("views", path.join(__dirname, "views"));
 app.use(flash());
 
-//passport js for aurthentication
 const passport = require("passport");
 const LocalStrategy = require("passport-local");
 const connectEnsureLogin = require("connect-ensure-login");
@@ -34,7 +30,6 @@ app.use(
 app.use(passport.initialize());
 app.use(passport.session());
 
-// creating passport stretargy
 passport.use(
   new LocalStrategy(
     {
@@ -104,7 +99,6 @@ app.use(function (req, res, next) {
   next();
 });
 
-//End-POints
 app.get("/", async (req, res) => {
   if (req.session.passport) {
     res.redirect("/todos");
@@ -192,7 +186,6 @@ app.put("/todos/:id", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
   }
 });
 
-// eslint-disable-next-line no-unused-vars
 app.delete(
   "/todos/:id",
   connectEnsureLogin.ensureLoggedIn(),
@@ -208,7 +201,6 @@ app.delete(
   }
 );
 
-// login routes
 app.get("/signup", (req, res) => {
   res.render("signup", {
     title: "signUp",
