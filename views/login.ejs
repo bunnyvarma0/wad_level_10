@@ -13,7 +13,7 @@
     <div class="grid grid-cols-6">
       <div class="col-span-2 col-start-3">
         <%- include("header.ejs") %>
-        <h6 class="mb-4 text-xl text-gray-900">Login to Todo Application</h6>
+        <h6 class="mb-4 text-xl text-gray-800">Login to Todo Application</h6>
 
         <% if(messages && messages.error && messages.error.length > 0)  { %>
           <% for(var i=0; i<messages.error.length; i++) { %>
@@ -24,7 +24,7 @@
         <form action="/session" method="post">
           <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
           <div>
-            <label for="emailID" class="py-1 text-xl text-gray-900"
+            <label for="emailID" class="py-1 text-xl text-gray-800"
               >Email :</label
             >
             <input
@@ -36,7 +36,7 @@
             />
           </div>
           <div>
-            <label for="pwd" class="py-1 text-xl text-gray-900"
+            <label for="pwd" class="py-1 text-xl text-gray-800"
               >Password :</label
             >
             <input
@@ -44,7 +44,7 @@
               id="pwd"
               name="password"
               required
-              class="w-full border border-gray-600 rounded px-5 py-2 my-2 text-gray-900"
+              class="w-full border border-gray-600 rounded px-5 py-2 my-2 text-gray-800"
             />
           </div>
           <div>
