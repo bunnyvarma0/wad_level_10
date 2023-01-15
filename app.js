@@ -50,12 +50,12 @@ passport.use(
               return done(null, user);
             } else {
               return done(null, false, {
-                message: "Invalid password",
+                message: "Invalid Password!",
               });
             }
           } else {
             return done(null, false, {
-              message: "With This email user doesn't exists",
+              message: "user doesn't exists With this email_id",
             });
           }
         })
@@ -159,11 +159,11 @@ app.post("/todos", connectEnsureLogin.ensureLoggedIn(), async (req, res) => {
     console.log(error.name);
     if (error.name == "SequelizeValidationError") {
       error.errors.forEach((e) => {
-        if (e.message == "Title length must greater than 5") {
-          req.flash("error", "Title length must greater than or equal to 5");
+        if (e.message == "The Title length must be greater than 5") {
+          req.flash("error", "The Title length must be greater than or equal to 5");
         }
-        if (e.message == "Please enter a valid date") {
-          req.flash("error", "Please enter a valid date");
+        if (e.message == "Please provide a valid date") {
+          req.flash("error", "Please provide a valid date");
         }
       });
       return res.redirect("/todos");
@@ -255,18 +255,18 @@ app.post("/users", async (req, res) => {
     console.log(error.name);
     if (error.name == "SequelizeValidationError") {
       error.errors.forEach((e) => {
-        if (e.message == "Please provide a firstName") {
-          req.flash("error", "Please provide a firstName");
+        if (e.message == "Please provide your firstName") {
+          req.flash("error", "Please provide your firstName");
         }
-        if (e.message == "Please provide email_id") {
-          req.flash("error", "Please provide email_id");
+        if (e.message == "Please provide your E-mail_id") {
+          req.flash("error", "Please provide your E-mail_id");
         }
       });
       return res.redirect("/signup");
     } else if (error.name == "SequelizeUniqueConstraintError") {
       error.errors.forEach((e) => {
-        if (e.message == "email must be unique") {
-          req.flash("error", "User with this email already exists");
+        if (e.message == "E-mail must be unique") {
+          req.flash("error", "User already exists with this email");
         }
       });
       return res.redirect("/signup");
